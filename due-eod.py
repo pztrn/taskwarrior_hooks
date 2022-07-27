@@ -30,7 +30,7 @@ task_data = json.loads(task_data_raw)
 
 if "due" in task_data:
     new_due_ts = datetime.datetime.strptime(task_data["due"], "%Y%m%dT%H%M%S%z").astimezone()
-    if new_due_ts.hour != 23 and new_due_ts.minute != 59 and new_due_ts.second != 59:
+    if new_due_ts.hour != 00 and new_due_ts.minute != 00 and new_due_ts.second != 00:
         new_due_ts = new_due_ts.replace(hour = 23, minute = 59, second = 59)
 
     task_data["due"] = new_due_ts.astimezone(tz = datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
